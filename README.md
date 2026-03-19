@@ -6,3 +6,4 @@
 | Fritz Tahiana Ailen        | QA Lead      |                   |
 | Angelina Denise Alonso     | UX Lead      |                   |
 | Lautaro Sebastian Gonzalez | Dev          |                   |
+| Balthazar Ibarra           | Dev          |                   |
