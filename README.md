@@ -4,6 +4,6 @@
 | Olivera Juan Cruz          | Scrum Master | juancruzolivera28 |
 | Gomez Borjas Agustina Luz  | Dev Lead     | agusfaqucp        |
 | Fritz Thaiana Ailen        | QA Lead      |                   |
-| Angelina Denise lonso     | UX Lead      |                   |
+| Angelina Denise Alonso     | UX Lead      |                   |
 | Lautaro Sebastian Gonzalez | Dev          |                   |
 | Balthazar Ibarra           | Dev          |                   |
