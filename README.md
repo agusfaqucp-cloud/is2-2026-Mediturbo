@@ -1,10 +1,10 @@
 is2-20226teamkutz
-| Nombre                     | Rol          | GitHub            | 
-|----------------------------|--------------|-------------------|
+| Nombre                     | Rol          | GitHub             | 
+|----------------------------|--------------|--------------------|
 | Olivera Juan Cruz          | Scrum Master | @juancruzolivera28 |
 | Gomez Borjas Agustina Luz  | Dev Lead     | @agusfaqucp        |
 | Fritz Thaiana Ailen        | QA Lead      | @fritzthai         |
-| Balthazar Ibarra           | UX Lead      |                   |
+| Ibarra Balthazar Cesar     | UX Lead      |                    |
 
 Descripcion breve del proyecto:
 
