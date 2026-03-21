@@ -1,4 +1,4 @@
-Mediturno
+Mediturbo
 | Nombre                     | Rol          | GitHub             | 
 |----------------------------|--------------|--------------------|
 | Olivera Juan Cruz          | Scrum Master | @juancruzolivera28 |
