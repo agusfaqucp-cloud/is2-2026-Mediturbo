@@ -11,6 +11,7 @@ Descripcion breve del proyecto:
 Nuestro Proyecto lo hicimos eligiendo la opcion A, Sobre una clínica médica que necesita digitalizar la asignación de turnos
 
 https://github.com/users/agusfaqucp-cloud/projects/4
+
 "Patrones a Utilizar"
 Caso de uso: 
 - El paciente ingresa al sistema y selecciona la especialidad, el médico y un horario disponible. El sistema valida los datos y asigna el turno según la lógica correspondiente. Una vez confirmado, el turno se registra y el paciente recibe una notificación.
