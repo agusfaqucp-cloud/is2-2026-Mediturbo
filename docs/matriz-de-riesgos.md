@@ -1,81 +1,31 @@
-# 📋 Matriz de Riesgos del Proyecto
+#  Matriz de Riesgos del Proyecto
 ## Sistema de Gestión de Turnos Médicos — Ingeniería en Software II
 
 **Metodología:** Kanban  
 **Equipo:** Olivera · Gomez Borjas · Fritz · Ibarra  
 **Fecha:** Marzo 2026
 
----
+# MATRIZ DE RIESGO
 
-## Escala de Valoración
-
-**Nivel de Riesgo = Probabilidad × Impacto (escala 1–5)**
-
-| Nivel | Rango P×I | Descripción |
-|-------|-----------|-------------|
-| 🟢 Bajo | 1 – 3 | Sin acción inmediata requerida |
-| 🟡 Medio | 4 – 8 | Requiere monitoreo |
-| 🟠 Alto | 9 – 14 | Requiere plan de acción concreto |
-| 🔴 Crítico | 15 – 25 | Acción inmediata requerida |
-
----
-
-## Riesgos Identificados
-
-| # | Descripción del Riesgo | Categoría | Prob. | Impacto | P×I | Prioridad | Estrategia | Plan de Acción / Mitigación | Responsable | Estado |
-|---|------------------------|-----------|:-----:|:-------:|:---:|-----------|------------|----------------------------|-------------|--------|
-| 1 | Falta de disponibilidad de integrantes por carga académica simultánea | Equipo / Recursos | 3 | 4 | 12 | 🟠 ALTO | Mitigar | Definir WIP limit=1 por persona; redistribuir tareas si alguien no puede avanzar en 48 hs. Revisión en sincronización semanal. | Olivera (SM) | Activo |
-| 2 | Conflictos de merge en ramas de desarrollo concurrente | Técnico / Código | 4 | 3 | 12 | 🟠 ALTO | Mitigar | Ramas cortas de vida <48 hs. Pull Requests obligatorios con revisión del Dev Lead antes de merge a main. Commits pequeños y frecuentes. | Gomez Borjas (Dev Lead) | Activo |
-| 3 | Ambigüedad en los requisitos de los estados del turno (pendiente, confirmado, cancelado, atendido) | Requisitos | 3 | 4 | 12 | 🟠 ALTO | Mitigar | Documentar criterios de aceptación por estado antes de codificar. Validar con el docente en semana 2. | Olivera (SM) + Fritz (QA) | Activo |
-| 4 | Diseño de UX inconsistente entre la vista del recepcionista y la del paciente | Diseño / UX | 3 | 3 | 9 | 🟠 ALTO | Mitigar | Ibarra define guía de estilos y componentes reutilizables en semana 1. Revisión cruzada antes de codificar pantallas. | Ibarra (UX Lead) | Activo |
-| 5 | Deuda técnica acumulada por falta de pruebas automatizadas | Técnico / QA | 4 | 4 | 16 | 🔴 CRÍTICO | Mitigar | Fritz define casos de prueba por historia antes de implementar. Criterio de "listo" incluye prueba QA aprobada. Al menos smoke tests por endpoint. | Fritz (QA Lead) | Activo |
-| 6 | Integración tardía entre front-end y back-end genera bloqueos al final del desarrollo | Técnico / Integración | 3 | 5 | 15 | 🔴 CRÍTICO | Mitigar | Acordar contrato de API (endpoints y payloads) en semana 2. Usar mocks en front-end mientras el back-end no está listo. Integración continua desde semana 3. | Gomez Borjas  + Ibarra | Activo |
-| 7 | Alcance mal dimensionado: funcionalidades que exceden el tiempo disponible | Alcance / Planificación | 3 | 4 | 12 | 🟠 ALTO | Mitigar | Priorizar backlog con MoSCoW. Las funcionalidades "Could" solo entran si el Must y Should están terminados. Revisar alcance en cada sincronización. | Olivera (SM) | Activo |
-| 8 | Pérdida de datos o código por falta de backup / push al repositorio | Técnico / Infraestructura | 2 | 5 | 10 | 🟠 ALTO | Mitigar | Todo el código vive en GitHub. Política: push obligatorio al finalizar cada sesión de trabajo. No trabajo local sin rama remota. | Todo el equipo | Activo |
-| 9 | Notificaciones simuladas mal implementadas: lógica compleja que distrae del núcleo del sistema | Técnico / Funcionalidad | 3 | 2 | 6 | 🟡 MEDIO | Aceptar | Implementar notificaciones como alerta visual simple en pantalla (sin email real). Alcance mínimo acordado desde el inicio. |   Ibarra | Activo |
-| 10 | Ausencia prolongada (enfermedad u otra) de un integrante clave | Equipo / Personas | 2 | 4 | 8 | 🟡 MEDIO | Contingencia | Documentación mínima de cada tarea en Trello (descripción + criterios de aceptación). Cualquier otro integrante puede tomar la tarea con contexto suficiente. | Olivera (SM) | Latente |
-| 11 | Herramienta de gestión abandonada: tablero desactualizado | Proceso / Kanban | 3 | 3 | 9 | 🟠 ALTO | Mitigar | SM revisa el tablero antes de cada sincronización. Criterio de equipo: no se considera trabajo hecho si la tarjeta no está en "Listo". | Olivera (SM) | Activo |
-| 12 | Falta de validación con usuarios reales (recepcionista / paciente) | Validación / Producto | 4 | 3 | 12 | 🟠 ALTO | Mitigar | Usar personas/escenarios definidos por el docente como proxy de usuario. Fritz valida flujos con casos de prueba basados en esos escenarios. | Fritz (QA) + Ibarra (UX) | Activo |
+| # | Riesgo | Categoría | Prob. | Impacto | P x I | Nivel | Estrategia | Plan de Acción | Plan de CONTINGENCIA (si ocurre) |
+|---|--------|-----------|-------|---------|-------|-------|------------|----------------|----------------------------------|
+| 1 | Falta de pruebas (deuda técnica), si el equipo escribe código sin probarlo, los errores se acumulan silenciosamente. Eso se llama "deuda técnica", como una deuda de dinero pero de calidad. Cuanto más tardamos en probarlo, más problemas acumulamos. | Técnico | 4 | 4 | 16 | 🔴 MUY ALTO | Mitigar | Definir tests antes de implementar y tener un Aseguramiento de Calidad | Hacer rollback de la funcionalidad afectada y dedicar un sprint exclusivo a corrección de bugs. |
+| 2 | Problemas de integración front-back. Donde el front es lo que el usuario ve (botones, pantallas, colores). El back es el motor que funciona por detrás (base de datos, lógica, cálculos). Son dos equipos distintos que trabajan por separado y en algún momento tienen que "conectarse". Si no acordaron desde el principio cómo van a hablar entre sí, cuando llega ese momento nada encaja. | Técnico | 3 | 5 | 15 | 🔴 MUY ALTO | Mitigar | Definir API desde el inicio y usar mocks | Desacoplar módulos temporalmente y entregar el front con datos simulados (mocks) hasta resolver la integración. |
+| 3 | Conflictos de merge en el código. Cuando varios programadores trabajan al mismo tiempo sobre el mismo archivo de código, ocurre lo mismo que cuando dos personas editan el mismo documento de Word a la vez: los cambios chocan. A eso se le llama "conflicto de merge". Si no se gestiona bien, un programador puede pisar el trabajo de otro sin darse cuenta. | Técnico | 4 | 3 | 12 | 🟠 ALTO | Mitigar | Usar ramas cortas y Pull Requests | Asignar al Dev Lead para resolver conflictos de forma inmediata y pausar nuevos commits hasta que el repositorio esté estable. |
+| 4 | Falta de tiempo del equipo | Equipo | 3 | 4 | 12 | 🟠 ALTO | Mitigar | Redistribuir tareas | Renegociar el alcance con el cliente, reducir funcionalidades no críticas y priorizar el MVP. |
+| 5 | Requisitos poco claros | Requisitos | 3 | 4 | 12 | 🟠 ALTO | Mitigar | Definir criterios y validar | Congelar el desarrollo de la funcionalidad afectada y convocar reunión de urgencia con el cliente para clarificar antes de continuar. |
+| 6 | Tablero de tareas desactualizado | Proceso | 3 | 2 | 6 | 🟡 MEDIO | Mitigar | Revisar tablero en cada reunión | Reconstruir el tablero en la próxima reunión con todo el equipo y reasignar tareas faltantes. |
+| 7 | Falta de comunicación en el equipo | Equipo | 2 | 3 | 6 | 🟡 MEDIO | Mitigar | Reuniones breves y seguimiento constante | Implementar canal de comunicación de emergencia (ej. grupo de WhatsApp o Slack urgente) y reunión inmediata para alinear al equipo. |
+| 8 | Notificaciones mal implementadas | Técnico | 2 | 2 | 4 | 🟢 BAJO | Aceptar | Mantener solución simple | Deshabilitar el módulo de notificaciones temporalmente y entregar sin esa funcionalidad hasta corregirla en el siguiente sprint. |
 
 ---
 
-## Resumen Ejecutivo
+### Referencia de Niveles
 
-| Prioridad | Cantidad | IDs |
-|-----------|:--------:|-----|
-| 🔴 Crítico | 2 | R05, R06 |
-| 🟠 Alto | 8 | R01, R02, R03, R04, R07, R08, R11, R12 |
-| 🟡 Medio | 2 | R09, R10 |
-| 🟢 Bajo | 0 | — |
-| **Total** | **12** | |
-
----
-
-## Mapa de Calor
-
-```
-
-PROB/IMPACTO     1       2       3       4       5
-             ┌───────┬───────┬───────┬───────┬───────┐
-5 Casi seg.  │       │       │       │       │       │
-             ├───────┼───────┼───────┼───────┼───────┤
-4 Probable   │       │       │  (2)  │  (1)  │       │
-             ├───────┼───────┼───────┼───────┼───────┤
-3 Posible    │       │  (1)  │  (2)  │  (3)  │  (1)  │
-             ├───────┼───────┼───────┼───────┼───────┤
-2 Improb.    │       │       │       │  (1)  │  (1)  │
-             ├───────┼───────┼───────┼───────┼───────┤
-1 Rara       │       │       │       │       │       │
-             └───────┴───────┴───────┴───────┴───────┘
-
-(n) = cantidad de riesgos en ese nivel de probabilidad × impacto
-```
-
----
-
-
----
-
-*Documento — Ingeniería en Software II · Marzo 2026*
-
+| Nivel | Rango P x I |
+|-------|-------------|
+| 🔴 MUY ALTO | 15 – 25 |
+| 🟠 ALTO | 10 – 14 |
+| 🟡 MEDIO | 5 – 9 |
+| 🟢 BAJO | 1 – 4 |
 
