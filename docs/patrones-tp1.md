@@ -20,8 +20,6 @@ Esto permite cambiar o agregar nuevas estrategias sin modificar el código exist
 
 El `GestorTurnos` utiliza una estrategia para crear turnos, delegando la lógica de asignación.
 
----
-
 ## Patrón 2: Observer
 
 ### Intención
@@ -41,8 +39,6 @@ Esto permite agregar nuevos observadores sin modificar la clase Turno.
 - Implementación: `ServicioNotificacion`
 
 El `Turno` notifica automáticamente a sus observadores cuando cambia su estado.
-
----
 
 ## Conclusión
 
