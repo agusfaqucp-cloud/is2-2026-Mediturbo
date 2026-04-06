@@ -46,3 +46,4 @@ Se aplicaron los patrones Strategy y Observer para mejorar:
 - Mantenibilidad del código
 
 El sistema permite evolucionar fácilmente sin necesidad de modificar estructuras existentes.
+
