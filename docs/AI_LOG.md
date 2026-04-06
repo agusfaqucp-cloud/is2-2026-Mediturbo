@@ -9,7 +9,6 @@ Se utilizó IA para:
 - Generar estructuras base de los patrones Strategy y Observer
 - Asistir en la implementación inicial de clases
 - Ayudar en el diseño de la interfaz gráfica con Swing
-- Redactar la documentación técnica
 
 ## Modificaciones realizadas
 - Adaptación de los ejemplos al sistema de turnos médicos
