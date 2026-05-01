@@ -1,0 +1,18 @@
+=== MediTurnos - Registro de turnos ===
+
+Turno #1
+  Paciente    : Balthazar
+  Especialidad: Cardiologia
+  Medico      : Dr. Garcia
+  Estado      : CONFIRMADO
+  Fecha       : 13/04/2026 21:45
+  Creado por  : admin
+
+Turno #2
+  Paciente    : Agustina
+  Especialidad: Pediatria
+  Medico      : Dra. Lopez
+  Estado      : PENDIENTE
+  Fecha       : 13/04/2026 21:45
+  Creado por  : admin
+
