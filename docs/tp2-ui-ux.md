@@ -38,7 +38,7 @@ El segundo perfil es el medico, que interactua con el sistema de forma mas puntu
 
 El tercer perfil es el paciente, que es el usuario con menor experiencia tecnica esperada. Su unica accion dentro del sistema es solicitar un turno: ingresar su nombre, elegir una especialidad y confirmar. Este usuario puede estar accediendo desde distintos dispositivos y en condiciones de estres vinculadas a su salud, lo que hace que la interfaz deba ser lo mas clara y guiada posible, sin opciones confusas ni pasos innecesarios.
 
-En los tres casos el sistema opera en contextos con cierta presion de tiempo o atencion dividida. Esto refuerza la necesidad de que la interfaz permita completar el flujo principal rapido, que los errores se comuniquen con mensajes claros y que no haya ambiguedad sobre si una accion se realizo o no. Estas consideraciones guiaron las decisiones de disenio tanto en el TP1 como en el prototipo de esta entrega.
+En los tres casos el sistema opera en contextos con cierta presion de tiempo o atencion dividida. Esto refuerza la necesidad de que la interfaz permita completar el flujo principal rapido, que los errores se comuniquen con mensajes claros y que no haya imprecision sobre si una accion se realizo o no. 
 
 ---
 
@@ -46,7 +46,6 @@ En los tres casos el sistema opera en contextos con cierta presion de tiempo o a
 
 La norma ISO 9241-11 define usabilidad como el grado en que un sistema permite a usuarios especificos alcanzar objetivos especificos con eficacia, eficiencia y satisfaccion en un contexto de uso determinado. Para esta auditoria seleccionamos los criterios de **eficiencia** y **satisfaccion**, que consideramos los mas criticos dado el perfil de usuarios que describimos en la seccion anterior.
 
----
 
 ### Criterio 1 - Eficiencia
 
@@ -67,7 +66,7 @@ Unificar el acceso para crear un turno en un unico punto visible, preferentement
 ### Criterio 2 - Satisfaccion
 
 **Definicion aplicada al sistema:**  
-La satisfaccion es la percepcion subjetiva del usuario sobre el sistema: si lo encuentra comodo, confiable y adecuado para su trabajo cotidiano. En sistemas de uso diario como este, la satisfaccion baja se traduce directamente en mas errores del operador y en resistencia a usar el sistema, lo que en un entorno medico puede tener consecuencias reales.
+La satisfaccion es la percepcion del usuario sobre el sistema: si lo encuentra comodo, confiable y adecuado para su trabajo cotidiano. En sistemas de uso diario como este, la satisfaccion baja se traduce directamente en mas errores del operador y en resistencia a usar el sistema, lo que en un entorno medico puede tener consecuencias reales.
 
 **Metrica definida:**  
 Se usaria una escala SUS (System Usability Scale) simplificada de 5 preguntas con puntaje del 1 al 5, aplicada a usuarios representativos de cada rol despues de completar el flujo principal. Un puntaje por encima de 70 sobre 100 se considera aceptable segun la literatura de HCI. Como medicion indirecta tambien se puede contar la cantidad de errores que comete el usuario durante el flujo antes de completarlo correctamente.
@@ -80,10 +79,10 @@ Agregar un mensaje de confirmacion breve que aparezca unos segundos despues de r
 
 ---
 
-### Alineacion con ISO 13407 - Diseno centrado en el humano
+### Alineacion con ISO 13407 - Diseño centrado en el humano
 
 La ISO 13407 propone un ciclo iterativo de cuatro fases para desarrollar sistemas interactivos: comprender el contexto de uso, especificar los requisitos del usuario, producir soluciones de disenio, y evaluar esas soluciones contra los requisitos. Lo interesante es que si miramos el proceso que seguimos en este proyecto, podemos identificar cada una de esas fases aunque no las hayamos seguido de forma explicita desde el principio.
 
-En la primera fase, antes de disenar cualquier pantalla, identificamos que el sistema tenia tres tipos de usuario con necesidades muy distintas y contextos de uso diferentes, lo que documentamos en la seccion A2. En la segunda fase definimos que cada rol debia acceder solo a las funciones que le corresponden, requisito que se implemento directamente en el codigo del TP1 con el sistema de roles. En la tercera fase disenamos y construimos el prototipo con la interfaz diferenciada por rol, la paleta de colores consistente con un entorno medico y las pantallas que documentamos en A1. La cuarta fase, la evaluacion formal con usuarios reales, es la que no pudimos completar en profundidad por las limitaciones del contexto academico, pero esta auditoria ISO 9241-11 es nuestra aproximacion a esa evaluacion: tomamos el prototipo, definimos metricas concretas, identificamos dos problemas reales y propusimos mejoras especificas. Si el proyecto continuara, el paso siguiente seria implementar esas mejoras y volver a evaluar, cerrando el ciclo iterativo que propone la norma.
+En la primera fase, antes de diseñar cualquier pantalla, identificamos que el sistema tenia tres tipos de usuario con necesidades muy distintas y contextos de uso diferentes. En la segunda fase definimos que cada rol debia acceder solo a las funciones que le corresponden, requisito que se implemento directamente en el codigo del TP1 con el sistema de roles. En la tercera fase disenamos y construimos el prototipo con la interfaz diferenciada por rol, la paleta de colores consistente con un entorno medico y las pantallas que documentamos en A1. La cuarta fase, la evaluacion formal con usuarios reales, es la que no pudimos completar en profundidad por las limitaciones del contexto academico, pero esta auditoria ISO 9241-11 es nuestra aproximacion a esa evaluacion: tomamos el prototipo, definimos metricas concretas, identificamos dos problemas reales y propusimos mejoras especificas. Si el proyecto continuara, el paso siguiente seria implementar esas mejoras y volver a evaluar, cerrando el ciclo iterativo que propone la norma.
 
 
