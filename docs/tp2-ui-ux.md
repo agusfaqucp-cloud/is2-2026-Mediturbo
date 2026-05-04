@@ -1,11 +1,5 @@
 # TP2 - Diseño de Interfaz Centrado en el Usuario
 
-**Proyecto:** MediTurnos - Sistema de gestion de turnos medicos  
-**Materia:** Ingenieria de Software II  
-**Entrega:** TP2 
-
----
-
 ## A1. Prototipo en Figma
 
 Para esta entrega completamos el prototipo del sistema en Figma cubriendo el flujo principal: desde que el usuario inicia sesion hasta que gestiona los turnos del dia. Las tres pantallas elegidas son las mas representativas del caso de uso central del sistema.
