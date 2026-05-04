@@ -3,13 +3,13 @@
 **Proyecto:** MediTurnos - Sistema de gestion de turnos medicos  
 **Materia:** Ingenieria de Software II  
 
----
+
 
 ## Introduccion
 
 La idea es tener en un solo lugar todo lo que tiene que ver con como probamos el sistema: que herramientas usamos, que casos de prueba implementamos, como pensamos escalar las pruebas en el futuro y que decisiones tomamos en el camino. Se va actualizando a medida que el proyecto avanza.
 
----
+
 
 ## Herramientas utilizadas
 
@@ -21,7 +21,7 @@ La idea es tener en un solo lugar todo lo que tiene que ver con como probamos el
 | Mockito | Mocking | Simular dependencias externas en pruebas futuras | Planificado |
 | Pruebas manuales | Interfaz grafica | Las ventanas Swing se prueban manualmente, no son automatizables en servidor sin pantalla | Manual |
 
----
+
 
 ## Casos de prueba implementados
 
@@ -36,7 +36,7 @@ Todos los casos estan en `pruebas/unit/` y cubren dos clases del sistema: `Gesto
 | 5 | `PersistenciaTurnos` | `cargarJSON()` | Valor limite | Archivo JSON con array vacio `[]` | Lista vacia sin excepcion |
 | 6 | `PersistenciaTurnos` | `cargarJSON()` | Valor limite | Paciente con nombre de solo espacios `"   "` | Nombre invalido detectable con trim() |
 
----
+
 
 ## Plan de mocks para pruebas de integracion futuras
 
@@ -54,7 +54,7 @@ Las pruebas de integracion no estan implementadas todavia, estan planificadas pa
 
 Mockito es el framework de mocking estandar en Java. Se integra directo con JUnit 5 y la sintaxis es bastante clara incluso para alguien que lo usa por primera vez. Para nuestro proyecto lo usariamos principalmente para mockear `ServicioNotificacion` en los tests de `GestorTurnos`, verificando que el patron Observer funciona correctamente sin depender de la implementacion real del servicio.
 
----
+
 
 ## Flujo de prueba de extremo a extremo (conceptual)
 
@@ -75,7 +75,7 @@ El flujo E2E cubre el caso de uso principal: un administrativo inicia sesion y r
 
 Este flujo no esta automatizado todavia. Las pruebas unitarias actuales cubren los pasos 4, 5, 6 y 9 de forma aislada.
 
----
+
 
 ## Estrategia de regresion
 
@@ -88,7 +88,7 @@ Para el futuro, la estrategia seria:
 - Nunca reducir la cantidad de tests que pasan, solo sumarle
 - Revisar la cobertura de codigo periodicamente usando el plugin de Surefire de Maven
 
----
+
 
 ## Plan de pruebas de estres (futuro)
 
@@ -103,7 +103,7 @@ Simular dos usuarios creando turnos para el mismo medico al mismo tiempo y verif
 **Escenario 3 - Archivo JSON corrupto**  
 Cargar un archivo JSON con datos invalidos mezclados con datos validos y medir cuantos turnos corruptos llegan a la tabla sin que el sistema lo detecte. Este escenario esta relacionado con el bug de persistencia que ya documentamos.
 
----
+
 
 ## Relacion entre patrones de diseno y testabilidad
 
@@ -115,6 +115,6 @@ Una de las decisiones del TP1 que mas impacta en como podemos probar el sistema 
 
 En resumen, haber aplicado estos patrones en el TP1 no solo mejoro la arquitectura del sistema sino que tambien facilito directamente la escritura de pruebas en el TP2, lo cual es una de las ventajas concretas del diseno orientado a objetos bien aplicado.
 
----
 
-*Documento actualizado en el marco del TP2 - Ingenieria de Software II*
+
+
