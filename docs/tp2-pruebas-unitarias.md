@@ -66,140 +66,6 @@ Elegimos JUnit 5 porque es el estandar para proyectos Java, tiene integracion di
 
 Los archivos estan en `pruebas/unit/` dentro del repositorio.
 
-```java
-// pruebas/unit/GestorTurnosTest.java
-
-import model.*;
-import strategy.*;
-import observer.ServicioNotificacion;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
-public class GestorTurnosTest {
-
-    private GestorTurnos gestor;
-
-    @BeforeEach
-    public void setUp() {
-        SistemaSesion.setUsuarioActual(new Usuario("admin", Rol.ADMIN));
-        gestor = new GestorTurnos(new AsignacionPorDisponibilidad(), new ServicioNotificacion());
-    }
-
-Caso 1 - Equivalencia valida: turno con datos correctos queda en PENDIENTE
-    @Test
-    public void testCrearTurnoValidoEstadoPendiente() {
-        Paciente paciente = new Paciente("Juan Perez");
-        Especialidad especialidad = new Especialidad("Cardiologia");
-
-        Turno turno = gestor.crearTurno(paciente, especialidad);
-
-        assertEquals(Estado.PENDIENTE, turno.getEstado(),
-            "Un turno recien creado deberia tener estado PENDIENTE");
-    }
-
-Caso 2 - Equivalencia invalida: nombre de paciente vacio
-    @Test
-    public void testCrearTurnoConNombreVacioDevuelveNombreVacio() {
-        Paciente paciente = new Paciente("");
-        Especialidad especialidad = new Especialidad("Pediatria");
-
-        Turno turno = gestor.crearTurno(paciente, especialidad);
-
-        assertTrue(turno.getPaciente().getNombre().isEmpty(),
-            "El turno se creo con nombre vacio, el sistema no valida este caso");
-    }
-
-Caso 3 - Equivalencia valida: cambio de estado de PENDIENTE a CONFIRMADO
-    @Test
-    public void testCambiarEstadoAConfirmado() {
-        Paciente paciente = new Paciente("Maria Lopez");
-        Especialidad especialidad = new Especialidad("Dermatologia");
-
-        Turno turno = gestor.crearTurno(paciente, especialidad);
-        turno.cambiarEstado(Estado.CONFIRMADO);
-
-        assertEquals(Estado.CONFIRMADO, turno.getEstado(),
-            "El estado deberia haber cambiado a CONFIRMADO");
-    }
-
-Caso 4 - Equivalencia valida: cambio de estado de CONFIRMADO a CANCELADO
-    @Test
-    public void testCambiarEstadoDeConfirmadoACancelado() {
-        Paciente paciente = new Paciente("Carlos Ruiz");
-        Especialidad especialidad = new Especialidad("Cardiologia");
-
-        Turno turno = gestor.crearTurno(paciente, especialidad);
-        turno.cambiarEstado(Estado.CONFIRMADO);
-        turno.cambiarEstado(Estado.CANCELADO);
-
-        assertEquals(Estado.CANCELADO, turno.getEstado(),
-            "El estado deberia haber cambiado a CANCELADO");
-    }
-}
-```
-
-```java
-// pruebas/unit/PersistenciaTurnosTest.java
-
-import datos.PersistenciaTurnos;
-import model.Turno;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Test;
-import java.io.*;
-import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
-
-public class PersistenciaTurnosTest {
-
-Caso 5 - Valor limite: archivo JSON con lista vacia
-    @Test
-    public void testCargarJSONVacioDevuelveListaVacia() throws Exception {
-        File archivo = new File("turnos.json");
-        try (PrintWriter pw = new PrintWriter(new FileWriter(archivo))) {
-            pw.println("[]");
-        }
-
-        List<Turno> resultado = PersistenciaTurnos.cargarJSON();
-
-        assertNotNull(resultado, "La lista no deberia ser null");
-        assertTrue(resultado.isEmpty(),
-            "Con un JSON vacio la lista de turnos deberia estar vacia");
-    }
-
-Caso 6 - Valor limite: paciente con nombre de solo espacios
-    @Test
-    public void testCargarJSONConPacienteNombreSoloEspacios() throws Exception {
-        File archivo = new File("turnos.json");
-        try (PrintWriter pw = new PrintWriter(new FileWriter(archivo))) {
-            pw.println("[");
-            pw.println("  {");
-            pw.println("    \"paciente\": \"   \",");
-            pw.println("    \"especialidad\": \"Cardiologia\",");
-            pw.println("    \"medico\": \"Dr. Garcia\",");
-            pw.println("    \"estado\": \"PENDIENTE\",");
-            pw.println("    \"fecha\": \"27/04/2026 10:00\",");
-            pw.println("    \"creadoPor\": \"admin\"");
-            pw.println("  }");
-            pw.println("]");
-        }
-
-        List<Turno> resultado = PersistenciaTurnos.cargarJSON();
-
-        assertFalse(resultado.isEmpty(), "Se cargo al menos un turno");
-        String nombrePaciente = resultado.get(0).getPaciente().getNombre().trim();
-        assertTrue(nombrePaciente.isEmpty(),
-            "Un nombre con solo espacios deberia considerarse invalido");
-    }
-
-    @AfterEach
-    public void limpiar() {
-        new File("turnos.json").delete();
-    }
-}
-```
-
-
 
 ## B2. GitHub Actions - CI/CD
 
@@ -211,7 +77,8 @@ El workflow corrio correctamente con status **Success** en GitHub Actions. La ca
 
 <img width="1366" height="611" alt="image" src="https://github.com/user-attachments/assets/358d93d6-5df8-4388-af19-dbd09daa791f" />
 
-**Video de ejecucion de los tests:**
+
+**Video de ejecucion de los tests:** https://youtu.be/E-YOE0nhhTE
 
 
 
