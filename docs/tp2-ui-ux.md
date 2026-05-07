@@ -7,8 +7,11 @@ Para esta entrega completamos el prototipo del sistema en Figma cubriendo el flu
 **Pantallas incluidas:**
 
 1. **Login** - pantalla de inicio de sesion con campos de usuario y contrasena, diferenciada por rol (admin, medico, paciente)
-2. **Panel principal** - vista central con la tabla de turnos, acciones rapidas segun rol y panel de notificaciones en tiempo real
-3. **Gestion de turnos** - pantalla de consulta con filtros por fecha, medico y estado del turno
+2. **Cartel de Bienvenida** - se da la bienvenida muestra nombre de quien ingresa, su rol y horario de ingreso, este mismo desaparece automaticamente tras 3 segundos.
+3. **Panel principal** - vista central con la tabla de turnos, acciones rapidas segun rol y panel de notificaciones en tiempo real
+4. **Gestion de turnos** - pantalla de consulta con filtros por fecha, medico y estado del turno
+5. **Estadisticas** - pantalla de estadisticas donde se muestra turnos por estado y medico, de igual manera quien seria el que mas turnos tiene
+6. **Cartel de sesion expirada** - tras cierto tiempo de inactividad el sistema va a cerra automaticamente la sesion del usuario
 
 **Link al prototipo Figma:**  
 https://www.figma.com/design/mRutYYwYpRe4THQYHtVc3X/MediTurnos---Pantallas?node-id=0-1&t=hKwMku6UAWEPle7o-1
@@ -18,14 +21,22 @@ https://www.figma.com/design/mRutYYwYpRe4THQYHtVc3X/MediTurnos---Pantallas?node-
 > Pantalla 1 - Login
 <img width="767" height="494" alt="image" src="https://github.com/user-attachments/assets/404a428e-5ee2-4167-8d9b-01342f242658" />
 
+> Pantalla 2 - Cartel de bienvenida
+<img width="469" height="291" alt="image" src="https://github.com/user-attachments/assets/995d6e6e-5cb2-4fdf-8db1-b0c4af50fc7c" />
 
-> Pantalla 2 - Panel principal
+
+> Pantalla 3 - Panel principal
 <img width="1366" height="729" alt="image" src="https://github.com/user-attachments/assets/9dc59c32-16c1-488b-8a25-5a2645d55fb0" />
 
 
-
-> Pantalla 3 - Gestion de turnos
+> Pantalla 4 - Gestion de turnos
 <img width="1364" height="723" alt="image" src="https://github.com/user-attachments/assets/5285cd9c-a996-415b-805c-6965ef06e962" />
+
+> Pantalla 5 - Estadisticas
+<img width="569" height="474" alt="image" src="https://github.com/user-attachments/assets/8f798c32-a614-42ea-bde9-dd067cff034b" />
+
+> Pantalla 6 - Cartel de sesion expirada
+<img width="346" height="128" alt="image" src="https://github.com/user-attachments/assets/86d59c3a-d631-4e7c-b42c-a2cec3a25a5f" />
 
 
 ---
