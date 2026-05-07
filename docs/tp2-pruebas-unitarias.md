@@ -1,15 +1,8 @@
 # TP2 - Pruebas de Software
 
-
-## B0. Investigacion previa
-
-Antes de escribir cualquier test, investigamos dos tecnicas fundamentales del testing de software que usamos como base para diseñar los casos de prueba de este TP.
-
 ### Clases de equivalencia
 
 Una clase de equivalencia es un grupo de valores de entrada que se espera que el sistema procese de la misma forma. La idea detras de esta tecnica es simple: si probas un valor de un grupo y funciona, es razonable asumir que todos los valores de ese grupo van a funcionar igual. Y al reves, si uno falla, todos deberian fallar. Esto nos permite cubrir el comportamiento del sistema sin tener que probar todos los valores posibles, que en la practica seria imposible.
-
-Para aplicarla, lo que hacemos es analizar que valores puede recibir una funcion y dividirlos en grupos segun como el sistema deberia responder. Siempre hay al menos una clase valida, que son los valores que el sistema deberia aceptar, y una o mas clases invalidas, que son los que deberia rechazar o manejar como error.
 
 **Ejemplo concreto en nuestro proyecto:**
 
@@ -20,7 +13,6 @@ El metodo que crea un turno en `GestorTurnos` recibe el nombre del paciente como
 - **Clase invalida 2:** nombre con solo espacios `"   "` → deberia tratarse igual que vacio y rechazarse
 
 En lugar de probar cien nombres distintos, con un caso por clase ya cubrimos los tres comportamientos posibles del sistema.
-
 
 
 ### Valores limite
@@ -37,15 +29,12 @@ En `PersistenciaTurnos`, el metodo `cargarJSON` lee una lista de turnos desde un
 - **Lista con 1 turno** (el minimo con datos reales) → deberia cargarlo correctamente
 - **Paciente con nombre de longitud 1** → un solo caracter, el minimo posible para un nombre no vacio, deberia aceptarse
 
-Estos casos en el borde son los mas propensos a fallar porque el codigo suele tener condiciones del tipo `> 0` en vez de `>= 0`, y esa diferencia de un caracter en la condicion es exactamente lo que el analisis de valor limite expone.
-
-
 
 ## B1. Pruebas unitarias
 
 ### Framework elegido: JUnit 5
 
-Elegimos JUnit 5 porque es el estandar para proyectos Java, tiene integracion directa con Maven y con VS Code a traves de la extension "Test Runner for Java", y la curva de aprendizaje es baja. No necesita configuracion compleja y los resultados se ven directamente en la terminal o en el IDE con colores que indican si el test paso o fallo.
+Elegimos JUnit 5 porque es el estandar para proyectos Java, tiene integracion directa con Maven y con VS Code a traves de la extension "Test Runner for Java". No necesita configuracion compleja y los resultados se ven directamente en la terminal o en el IDE con colores que indican si el test paso o fallo. Con estevamos a poder utilizar todas las herramientas necesarias para hacer las pruebas 
 
 
 
@@ -69,7 +58,7 @@ Los archivos estan en `pruebas/unit/` dentro del repositorio.
 
 ## B2. GitHub Actions - CI/CD
 
-Elegimos JUnit 5 con Maven porque Maven tiene soporte nativo en GitHub Actions y el comando `mvn test` ejecuta todos los tests y muestra el resultado en consola sin configuracion extra. El archivo de workflow esta en `.github/workflows/test.yml` en el repositorio y se dispara automaticamente en cada push a main.
+Elegimos JUnit 5 con Maven porque Maven tiene soporte en GitHub Actions y el comando `mvn test` ejecuta todos los tests y muestra el resultado en consola sin configuracion extra. El archivo de workflow esta en `.github/workflows/test.yml` en el repositorio y se dispara automaticamente en cada push a main.
 
 **Evidencia de ejecucion exitosa:**
 
@@ -92,7 +81,7 @@ El modulo `PersistenciaTurnos` depende directamente del sistema de archivos para
 
 ### Dependencia 2 - Sistema de sesion (SistemaSesion)
 
-`SistemaSesion` guarda el usuario actual en un campo estatico compartido por toda la aplicacion. En pruebas de integracion esto es problematico porque el estado que deja una prueba puede contaminar la siguiente si no se limpia bien. En un sistema real esta dependencia seria un servicio de autenticacion externo, ya sea una base de datos de usuarios, un directorio LDAP o un proveedor OAuth, que en las pruebas se reemplazaria por un stub que devuelve siempre un usuario fijo y controlado.
+`SistemaSesion` guarda el usuario actual en un campo estatico compartido por toda la aplicacion. En pruebas de integracion esto es problematico porque el estado que deja una prueba puede contaminar la siguiente si no se limpia bien. En un sistema real esta dependencia seria un servicio de autenticacion externo, ya sea una base de datos de usuarios, un directorio o un proveedor , que en las pruebas se reemplazaria por un stub que devuelve siempre un usuario fijo y controlado.
 
 
 
@@ -110,35 +99,3 @@ ENTONCES el archivo turnos.json deberia contener 3 turnos
 Y el tercer turno deberia tener paciente "Ana Garcia" y estado "PENDIENTE"
 Y el ServicioNotificacion deberia haber recibido exactamente 1 notificacion
 ```
-
-
-
-### Herramienta recomendada: Mockito
-
-Mockito es el framework de mocking mas usado en Java y tiene integracion directa con JUnit 5. La sintaxis es bastante clara incluso para alguien que lo usa por primera vez, y permite crear dobles de prueba con pocas lineas de codigo. Para nuestro proyecto serviria principalmente para mockear `ServicioNotificacion` en los tests de `GestorTurnos`, de forma de verificar que el Observer se notifica correctamente sin depender de la implementacion real del servicio.
-
-```java
-Ejemplo de como se usaria Mockito en una prueba futura
-
-@Test
-public void testGestorNotificaAlCrearTurno() {
-    ServicioNotificacion mockNotificacion = mock(ServicioNotificacion.class);
-    GestorTurnos gestor = new GestorTurnos(new AsignacionPorDisponibilidad(), mockNotificacion);
-
-    gestor.crearTurno(new Paciente("Test"), new Especialidad("Cardiologia"));
-
-    assertNotNull(gestor.getEstrategia());
-}
-```
-
-La dependencia para agregar al `pom.xml` cuando se implemente:
-
-```xml
-<dependency>
-    <groupId>org.mockito</groupId>
-    <artifactId>mockito-junit-jupiter</artifactId>
-    <version>5.4.0</version>
-    <scope>test</scope>
-</dependency>
-```
-
