@@ -1,0 +1,17 @@
+1. Verificación vs Validación
+La verificación pregunta "¿lo estamos haciendo bien?" y la validación pregunta "¿estamos haciendo lo que el usuario necesita?". En nuestro proyecto, verificación sería revisar que el patrón Observer notifique correctamente cuando un turno cambia. Validación sería sentarnos con el cliente a confirmar que el paciente realmente recibe y entiende esa notificación.
+
+2. Planificación de V&V para el próximo sprint
+Haríamos dos cosas: una revisión de código entre nosotros sobre las clases del patrón Strategy antes de mergear a main, y una demo al Product Owner al final del sprint donde un paciente recorre el flujo completo de reserva.
+
+3. Inspección de código vs Prueba automática
+La inspección es leer el código con ojo crítico sin ejecutarlo, útil para evaluar diseño y arquitectura. La prueba automática ejecuta el sistema y se puede repetir con cada cambio sin esfuerzo. Inspeccionamos cuando queremos validar decisiones de diseño; automatizamos para asegurarnos de que nada se rompe.
+
+4. Análisis estático automatizado
+Usamos SonarQube, integrado con nuestro proyecto Java/Maven. Sin ejecutar el código puede detectar, por ejemplo, un acceso a un objeto Medico sin verificar que no sea null, lo que podría tirar una excepción justo cuando un paciente intenta reservar un turno.
+
+5. Métodos formales de verificación
+Son imprescindibles cuando un error puede costar vidas: aviones, marcapasos, reactores nucleares. No se usan siempre porque son costosos, requieren conocimientos matemáticos avanzados y son difíciles de escalar. Para nuestro sistema de turnos, el esfuerzo sería desproporcionado.
+
+6. Reuniones de validación en Scrum/XP
+En la Sprint Review, el Product Owner revisa lo que construimos y decide si cumple con lo acordado. Las pruebas automatizadas lo respaldan: le garantizan que lo nuevo no rompió lo que ya funcionaba. Sin esa red de seguridad, cada demo sería una apuesta.
